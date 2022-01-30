@@ -1,21 +1,29 @@
 <template>
   <img alt="Vue logo" src="@/assets/logo.png" />
   <HelloWorld :msg="a" />
+  <p>{{ data }}</p>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from 'vue';
 
-import HelloWorld from "@/components/HelloWorld.vue";
+import HelloWorld from '@/components/HelloWorld.vue';
 
 export default defineComponent({
-  name: "App",
+  name: 'App',
   components: {
     HelloWorld
   },
   setup() {
-    const a = "Ky.Smile";
-    return { a };
+    const a = 'hello';
+    const data = ref();
+
+    (async () => {
+      const res = await fetch('https://random-data-api.com/api/food/random_food');
+      data.value = await res.json();
+    })();
+
+    return { a, data };
   }
 });
 </script>
