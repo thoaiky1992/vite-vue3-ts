@@ -1,29 +1,33 @@
 <template>
   <img alt="Vue logo" src="@/assets/logo.png" />
   <HelloWorld :msg="a" />
-  <p>{{ data }}</p>
+
+  <h1 v-if="app">{{ `${app.id}---${app.app_name}` }}</h1>
+  <h1 v-else>loading...</h1>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-
+import { defineComponent, reactive, ref, toRefs } from 'vue';
+import AppEntity from '@/entities/app.entity';
 import HelloWorld from '@/components/HelloWorld.vue';
-
+import { useAppService } from '@/services/app.service';
 export default defineComponent({
   name: 'App',
   components: {
     HelloWorld
   },
   setup() {
-    const a = 'hello';
-    const data = ref();
+    const a = 'Hello world !!';
+    let data = reactive<{ app: AppEntity | undefined }>({ app: undefined });
+    const service = useAppService();
 
-    (async () => {
-      const res = await fetch('https://random-data-api.com/api/food/random_food');
-      data.value = await res.json();
+    (() => {
+      setTimeout(async () => {
+        data.app = await service.getOne();
+      }, 1000);
     })();
 
-    return { a, data };
+    return { a, ...toRefs(data) };
   }
 });
 </script>
