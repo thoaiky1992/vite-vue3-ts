@@ -8,5 +8,13 @@ export default defineConfig({
       '@': resolve(__dirname, 'src')
     }
   },
-  plugins: [vue()]
+  plugins: [vue()],
+  server: {
+    proxy: {
+      '/socket.io': {
+        target: 'http://localhost:4000',
+        ws: true
+      }
+    }
+  }
 });

@@ -11,7 +11,9 @@
     "lint:style": "stylelint src/**/*.{css,scss,vue}"
   },
   "dependencies": {
-    "vue": "^3.1.4"
+    "socket.io-client": "^4.4.1",
+    "vue": "^3.1.4",
+    "vue-3-socket.io": "^1.0.4"
   },
   "devDependencies": {
     "@types/vue": "^2.0.0",

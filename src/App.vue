@@ -7,16 +7,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, toRefs } from 'vue';
+import { defineComponent, reactive, toRefs, inject, onMounted } from 'vue';
 import AppEntity from '@/entities/app.entity';
 import HelloWorld from '@/components/HelloWorld.vue';
 import { useAppService } from '@/services/app.service';
+import { Socket } from 'socket.io-client';
 export default defineComponent({
   name: 'App',
   components: {
     HelloWorld
   },
   setup() {
+    const socket: Socket | undefined = inject('socket') as Socket;
     const a = 'Hello world !!';
     let data = reactive<{ app: AppEntity | undefined }>({ app: undefined });
     const service = useAppService();
@@ -26,6 +28,12 @@ export default defineComponent({
         data.app = await service.getOne();
       }, 1000);
     })();
+
+    onMounted(() => {
+      socket.on('socket', (data: any) => {
+        console.log(data);
+      });
+    });
 
     return { a, ...toRefs(data) };
   }
