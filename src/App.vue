@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="@/assets/logo.png" />
-  <HelloWorld :msg="a" />
+  <HelloWorld :msg="t('common.hello')" />
 
   <h1 v-if="app">{{ `${app.id}---${app.app_name}` }}</h1>
   <h1 v-else>loading...</h1>
@@ -16,6 +16,7 @@ import HelloWorld from '@/components/HelloWorld.vue';
 import { useAppService } from '@/services/app.service';
 import { Socket } from 'socket.io-client';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 export default defineComponent({
   name: 'App',
   components: {
@@ -23,8 +24,9 @@ export default defineComponent({
   },
   setup() {
     // const socket: Socket | undefined = inject('socket') as Socket;
-    const a = 'Hello world !!';
     const router = useRouter();
+    const { t } = useI18n();
+
     let data = reactive<{ app: AppEntity | undefined }>({ app: undefined });
     const service = useAppService();
 
@@ -44,7 +46,7 @@ export default defineComponent({
     //   });
     // });
 
-    return { a, ...toRefs(data), directRoute };
+    return { ...toRefs(data), directRoute, t };
   }
 });
 </script>
