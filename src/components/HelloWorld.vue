@@ -1,9 +1,12 @@
 <template>
   <h1>{{ msg }}</h1>
+  <h2>{{ counter }}</h2>
+  <button @click="inc">increment counter</button>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue';
+import { ActionTypes, useStore } from '@/vuex';
+import { ref, defineComponent, toRefs } from 'vue';
 export default defineComponent({
   name: 'HelloWorld',
   props: {
@@ -13,8 +16,13 @@ export default defineComponent({
     }
   },
   setup: () => {
+    const store = useStore();
+    const inc = () => {
+      store.dispatch(ActionTypes.INC_COUNTER);
+    };
+
     const count = ref(0);
-    return { count };
+    return { count, ...toRefs(store.state), inc };
   }
 });
 </script>
