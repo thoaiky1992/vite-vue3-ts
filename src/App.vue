@@ -6,6 +6,7 @@
   <h1 v-else>loading...</h1>
   <button @click="directRoute('/')">Route Home</button>
   <button @click="directRoute('/about')">Route About</button>
+  <button @click="registerNoti">register notify</button>
   <router-view></router-view>
 </template>
 
@@ -17,6 +18,7 @@ import { useAppService } from '@/services/app.service';
 import { Socket } from 'socket.io-client';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import registerNotification from './helpers/notification';
 export default defineComponent({
   name: 'App',
   components: {
@@ -40,13 +42,17 @@ export default defineComponent({
       }, 1000);
     })();
 
+    const registerNoti = () => {
+      registerNotification();
+    };
+
     // onMounted(() => {
     //   socket.on('socket', (data: any) => {
     //     console.log(data);
     //   });
     // });
 
-    return { ...toRefs(data), directRoute, t };
+    return { ...toRefs(data), directRoute, t, registerNoti };
   }
 });
 </script>

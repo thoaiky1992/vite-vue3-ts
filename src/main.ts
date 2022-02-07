@@ -5,6 +5,9 @@ import '@/index.css';
 import { store } from './vuex';
 import router from './router';
 import { i18n } from './i18n';
+import BootstrapServiceWorker from './helpers/server-worker';
+
+BootstrapServiceWorker();
 
 const app = createApp(App);
 
