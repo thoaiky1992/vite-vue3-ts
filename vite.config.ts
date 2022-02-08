@@ -6,7 +6,7 @@ import vueI18n from '@intlify/vite-plugin-vue-i18n';
 export default defineConfig({
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src')
+      '@': resolve(__dirname, './src')
     }
   },
   plugins: [
@@ -16,7 +16,7 @@ export default defineConfig({
       // compositionOnly: false,
 
       // you need to set i18n resource including paths !
-      include: path.resolve(__dirname, './path/to/src/i18n/locales/**')
+      include: path.resolve(__dirname, './src/i18n/locales/**')
     })
   ],
   server: {
