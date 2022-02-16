@@ -6,12 +6,13 @@
   <h1 v-else>loading...</h1>
   <button @click="directRoute('/')">Route Home</button>
   <button @click="directRoute('/about')">Route About</button>
-  <button @click="registerNoti">register notify</button>
+  <button @click="addAlert">add Alert</button>
+  <alert :alerts="alerts" />
   <router-view></router-view>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, inject, onMounted } from 'vue';
+import { defineComponent, reactive, toRefs, inject, onMounted, ref } from 'vue';
 import AppEntity from '@/entities/app.entity';
 import HelloWorld from '@/components/HelloWorld.vue';
 import { useAppService } from '@/services/app.service';
@@ -19,10 +20,12 @@ import { Socket } from 'socket.io-client';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import registerNotification from './helpers/notification';
+import Alert from '@/components/Alert.vue';
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    Alert
   },
   setup() {
     // const socket: Socket | undefined = inject('socket') as Socket;
@@ -30,6 +33,7 @@ export default defineComponent({
     const { t } = useI18n();
 
     let data = reactive<{ app: AppEntity | undefined }>({ app: undefined });
+    let alerts = ref(['hello !!!']);
     const service = useAppService();
 
     const directRoute = (path: string) => {
@@ -42,6 +46,19 @@ export default defineComponent({
       }, 1000);
     })();
 
+    const addAlert = () => {
+      alerts.value.unshift('Hello' + Math.random());
+      setTimeout(() => {
+        alerts.value.pop();
+      }, 2000);
+    };
+
+    onMounted(() => {
+      setTimeout(() => {
+        alerts.value.pop();
+      }, 2000);
+    });
+
     const registerNoti = () => {
       registerNotification();
     };
@@ -52,7 +69,7 @@ export default defineComponent({
     //   });
     // });
 
-    return { ...toRefs(data), directRoute, t, registerNoti };
+    return { ...toRefs(data), directRoute, t, registerNoti, alerts, addAlert };
   }
 });
 </script>
