@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, PropType } from 'vue';
+import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
   props: {
@@ -21,34 +21,30 @@ export default defineComponent({
   }
 });
 </script>
-<style lang="scss">
-.alert {
-  position: fixed;
-  z-index: 200;
-  top: 10px;
-  right: 10px;
+<style lang="sass">
+.alert
+  position: fixed
+  z-index: 200
+  top: 10px
+  right: 10px
 
-  .item {
-    width: 400px;
-    height: 100px;
-    background-color: #0000;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #000;
-  }
-}
+  .item
+    width: 400px
+    height: 100px
+    display: flex
+    background-color: #0000
+    justify-content: center
+    align-items: center
+    color: black
+    font-weight: bold
+    border-radius: 5px
+    box-shadow: 0 0 5px #000
+    margin-bottom: 10px
 
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.5s ease;
-}
+.list-enter-active,.list-leave-active
+  transition: all 0.5s ease
 
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
+.list-enter-from,.list-leave-to
+  opacity: 0
+  transform: translateX(30px)
 </style>

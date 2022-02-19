@@ -1,13 +1,37 @@
 <template>
-  <img alt="Vue logo" src="@/assets/logo.png" />
+  <img class="m-auto" alt="Vue logo" src="@/assets/logo.png" />
   <HelloWorld :msg="t('common.hello')" />
 
   <h1 v-if="app">{{ `${app.id}---${app.app_name}` }}</h1>
   <h1 v-else>loading...</h1>
-  <button @click="directRoute('/')">Route Home</button>
-  <button @click="directRoute('/about')">Route About</button>
-  <button @click="addAlert">add Alert</button>
+  <button
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-1"
+    @click="directRoute('/')"
+  >
+    Route Home
+  </button>
+  <button
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-1"
+    @click="directRoute('/about')"
+  >
+    Route About
+  </button>
+  <button
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    @click="addAlert"
+  >
+    add Alert
+  </button>
   <alert :alerts="alerts" />
+  <div class="mt-5">
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      @click="show = true"
+    >
+      Toogle dialog
+    </button>
+  </div>
+  <c-dialog :show="show" @close="closeDialog" />
   <router-view></router-view>
 </template>
 
@@ -21,19 +45,23 @@ import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import registerNotification from './helpers/notification';
 import Alert from '@/components/Alert.vue';
+import CDialog from '@/components/Dialog.vue';
+import { log } from 'console';
 export default defineComponent({
   name: 'App',
   components: {
     HelloWorld,
-    Alert
+    Alert,
+    CDialog
   },
   setup() {
     // const socket: Socket | undefined = inject('socket') as Socket;
     const router = useRouter();
     const { t } = useI18n();
+    const show = ref<boolean>(false);
 
     let data = reactive<{ app: AppEntity | undefined }>({ app: undefined });
-    let alerts = ref(['hello !!!']);
+    let alerts = ref<string[]>([]);
     const service = useAppService();
 
     const directRoute = (path: string) => {
@@ -68,8 +96,10 @@ export default defineComponent({
     //     console.log(data);
     //   });
     // });
-
-    return { ...toRefs(data), directRoute, t, registerNoti, alerts, addAlert };
+    const closeDialog = (data: boolean) => {
+      show.value = data;
+    };
+    return { ...toRefs(data), directRoute, t, registerNoti, alerts, addAlert, show, closeDialog };
   }
 });
 </script>
