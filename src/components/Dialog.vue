@@ -1,7 +1,7 @@
 <template>
   <div
     v-show="show"
-    class="
+    :class="`
       fixed
       h-full
       w-full
@@ -12,9 +12,7 @@
       flex
       justify-center
       items-center
-      transition-all
-      duration-300
-    "
+      ${show && flag ? 'animate-dialog_leave_opacity' : 'animate-dialog_opacity'}`"
   >
     <div
       :class="`
@@ -26,7 +24,7 @@
         justify-center
         items-center
         shadow-2xl
-        ${show && flag ? 'animate-dialog' : 'animate-leave_dialog'}  `"
+        ${show && flag ? 'animate-dialog' : 'animate-leave_dialog'}`"
     >
       <p class="text-black font-bold text-2xl" @click="close">Hello word</p>
     </div>
@@ -50,7 +48,7 @@ export default defineComponent({
       flag.value = false;
       setTimeout(() => {
         emit('close', false);
-      }, 400);
+      }, 200);
     };
     watch(
       () => props.show,
