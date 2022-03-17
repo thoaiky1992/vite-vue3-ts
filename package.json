@@ -11,9 +11,11 @@
     "lint:style": "stylelint src/**/*.{css,scss,vue}"
   },
   "dependencies": {
+    "@vee-validate/rules": "^4.5.10",
     "firebase": "^8.1.2",
     "register-service-worker": "^1.7.1",
     "socket.io-client": "^4.4.1",
+    "vee-validate": "^4.5.10",
     "vue": "^3.1.4",
     "vue-3-socket.io": "^1.0.4",
     "vue-i18n": "^9.2.0-beta.30",

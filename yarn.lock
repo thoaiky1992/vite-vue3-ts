@@ -814,6 +814,11 @@
     "@typescript-eslint/types" "4.28.2"
     eslint-visitor-keys "^2.0.0"
 
+"@vee-validate/rules@^4.5.10":
+  version "4.5.10"
+  resolved "https://registry.yarnpkg.com/@vee-validate/rules/-/rules-4.5.10.tgz#c2d1ae539ef105622388f6061c11f9f395a99e17"
+  integrity sha512-8kFsXvCzP1JHuyzXyH7cIhLQOJnba6ySG5GzaKnWGIJnbT1itNJ6dACdedjW3bWWpYiOkxi76Nqj14UL0ukMFQ==
+
 "@vitejs/plugin-vue@^1.2.4":
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-1.2.4.tgz#a7aa6e6a31c556a8b781de730316deeecf7f56f2"
@@ -913,6 +918,11 @@
   version "6.0.0-beta.21.1"
   resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.0.0-beta.21.1.tgz#f1410f53c42aa67fa3b01ca7bdba891f69d7bc97"
   integrity sha512-FqC4s3pm35qGVeXRGOjTsRzlkJjrBLriDS9YXbflHLsfA9FrcKzIyWnLXoNm+/7930E8rRakXuAc2QkC50swAw==
+
+"@vue/devtools-api@^6.0.0-beta.15":
+  version "6.1.3"
+  resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.1.3.tgz#a44c52e8fa6d22f84db3abdcdd0be5135b7dd7cf"
+  integrity sha512-79InfO2xHv+WHIrH1bHXQUiQD/wMls9qBk6WVwGCbdwP7/3zINtvqPNMtmSHXsIKjvUAHc8L0ouOj6ZQQRmcXg==
 
 "@vue/eslint-config-prettier@^6.0.0":
   version "6.0.0"
@@ -5398,6 +5408,13 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+vee-validate@^4.5.10:
+  version "4.5.10"
+  resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-4.5.10.tgz#425d4ca1e317361b86f7deb6600daec8942e9b90"
+  integrity sha512-7dZE0PZTNY3Ztp6Gz8iw+QS7Fz59vU1qkD0rBJkldkf9Faw2lFjWgE0tiCist5RQkLgt7/HaVbojzb/SCdutfA==
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.15"
 
 vfile-location@^2.0.0:
   version "2.0.6"

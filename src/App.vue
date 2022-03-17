@@ -32,6 +32,7 @@
     </button>
   </div>
   <c-dialog :show="show" @close="closeDialog" />
+  <Form />
   <router-view></router-view>
 </template>
 
@@ -46,13 +47,15 @@ import { useI18n } from 'vue-i18n';
 import registerNotification from './helpers/notification';
 import Alert from '@/components/Alert.vue';
 import CDialog from '@/components/Dialog.vue';
-import { log } from 'console';
+import Form from '@/components/Form.vue';
+
 export default defineComponent({
   name: 'App',
   components: {
     HelloWorld,
     Alert,
-    CDialog
+    CDialog,
+    Form
   },
   setup() {
     // const socket: Socket | undefined = inject('socket') as Socket;

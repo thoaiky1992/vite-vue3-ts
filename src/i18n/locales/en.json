@@ -1,5 +1,14 @@
 {
   "common": {
     "hello": "Hello world !!!!!"
+  },
+  "validation": {
+    "between": "The field must be between {min} and {max}",
+    "email": "The field must be a valid email",
+    "image": "The field must be an image",
+    "max": "The field may not be greater than {length} characters",
+    "min": "The field must be at least {length} characters",
+    "numeric": "The field may only contain numeric characters",
+    "required": "The field is required"
   }
 }

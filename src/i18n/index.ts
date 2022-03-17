@@ -9,7 +9,7 @@ export type Language = 'en' | 'vi';
 
 export const supportLanguages: Language[] = ['en', 'vi'];
 
-const locale: Language = (localStorage.getItem('locale') as Language) ?? supportLanguages[0];
+const locale: Language = (localStorage.getItem('locale') as Language) ?? supportLanguages[1];
 
 export const i18n = createI18n<[MessageEnSchema, MessageViSchema], 'en' | 'vi'>({
   legacy: false,
@@ -20,3 +20,5 @@ export const i18n = createI18n<[MessageEnSchema, MessageViSchema], 'en' | 'vi'>(
     vi: vi
   }
 });
+
+export type i18nType = typeof i18n;
