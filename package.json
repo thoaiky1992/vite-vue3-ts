@@ -11,8 +11,12 @@
     "lint:style": "stylelint src/**/*.{css,scss,vue}"
   },
   "dependencies": {
+    "@types/moment-timezone": "^0.5.30",
     "@vee-validate/rules": "^4.5.10",
+    "axios": "^0.26.1",
     "firebase": "^8.1.2",
+    "jwt-decode": "^3.1.2",
+    "moment": "^2.29.1",
     "register-service-worker": "^1.7.1",
     "socket.io-client": "^4.4.1",
     "vee-validate": "^4.5.10",
@@ -42,6 +46,7 @@
     "lint-staged": "^10.5.0",
     "postcss": "^8.4.6",
     "prettier": "^2.3.2",
+    "prettier-plugin-tailwindcss": "^0.1.8",
     "sass": "^1.49.8",
     "tailwindcss": "^3.0.23",
     "typescript": "4.2.4",

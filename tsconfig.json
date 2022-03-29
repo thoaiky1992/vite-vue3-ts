@@ -21,7 +21,7 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "src/plugins/index.js",
-    "src/plugins/index.js"
+    "src/config/plugins/index.js",
+    "src/config/plugins/index.js"
   ]
 }

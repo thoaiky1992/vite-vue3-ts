@@ -1,6 +1,6 @@
 import { createI18n } from 'vue-i18n';
-import en from '@/i18n/locales/en.json';
-import vi from '@/i18n/locales/vi.json';
+import en from '@/config/i18n/locales/en.json';
+import vi from '@/config/i18n/locales/vi.json';
 // Type-define 'en-US' as the master schema for the resource
 export type MessageEnSchema = typeof en;
 export type MessageViSchema = typeof vi;

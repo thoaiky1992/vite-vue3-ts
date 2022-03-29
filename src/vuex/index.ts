@@ -96,8 +96,8 @@ export const store = createStore({
   state,
   mutations,
   actions,
-  getters,
-  plugins: [createLogger()]
+  getters
+  // plugins: [createLogger()]
 });
 
 export function useStore() {

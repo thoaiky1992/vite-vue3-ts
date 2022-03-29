@@ -1,7 +1,7 @@
 <template>
   <h1>{{ msg }}</h1>
   <h2>{{ counter }}</h2>
-  <button class="bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" @click="inc">
+  <button class="rounded bg-gray-400 py-2 px-4 font-bold text-white hover:bg-gray-700" @click="inc">
     increment counter
   </button>
 </template>

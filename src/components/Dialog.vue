@@ -3,30 +3,30 @@
     v-show="show"
     :class="`
       fixed
+      inset-0
+      top-0
+      z-50 flex
       h-full
       w-full
-      bg-black bg-opacity-40
-      z-50
-      top-0
-      inset-0
-      flex
-      justify-center
       items-center
+      justify-center
+      bg-black
+      bg-opacity-40
       ${show && flag ? 'animate-dialog_leave_opacity' : 'animate-dialog_opacity'}`"
   >
     <div
       :class="`
-        w-96
-        h-48
-        bg-white
-        rounded-xl
         flex
-        justify-center
+        h-48
+        w-96
         items-center
+        justify-center
+        rounded-xl
+        bg-white
         shadow-2xl
         ${show && flag ? 'animate-dialog' : 'animate-leave_dialog'}`"
     >
-      <p class="text-black font-bold text-2xl" @click="close">Hello word</p>
+      <p class="text-2xl font-bold text-black" @click="close">Hello word</p>
     </div>
   </div>
 </template>

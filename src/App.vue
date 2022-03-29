@@ -1,38 +1,4 @@
 <template>
-  <img class="m-auto" alt="Vue logo" src="@/assets/logo.png" />
-  <HelloWorld :msg="t('common.hello')" />
-
-  <h1 v-if="app">{{ `${app.id}---${app.app_name}` }}</h1>
-  <h1 v-else>loading...</h1>
-  <button
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-1"
-    @click="directRoute('/')"
-  >
-    Route Home
-  </button>
-  <button
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-1"
-    @click="directRoute('/about')"
-  >
-    Route About
-  </button>
-  <button
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-    @click="addAlert"
-  >
-    add Alert
-  </button>
-  <alert :alerts="alerts" />
-  <div class="mt-5">
-    <button
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      @click="show = true"
-    >
-      Toogle dialog
-    </button>
-  </div>
-  <c-dialog :show="show" @close="closeDialog" />
-  <Form />
   <router-view></router-view>
 </template>
 
@@ -51,12 +17,6 @@ import Form from '@/components/Form.vue';
 
 export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld,
-    Alert,
-    CDialog,
-    Form
-  },
   setup() {
     // const socket: Socket | undefined = inject('socket') as Socket;
     const router = useRouter();

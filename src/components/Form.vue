@@ -2,34 +2,36 @@
   <v-form
     :validation-schema="schema"
     class="
-      shadow
+      focus:shadow-outline
+      m-auto
+      mt-3
+      w-1/2
       appearance-none
-      border
       rounded
+      border
       py-5
       px-3
-      mt-3
-      text-gray-700
       leading-tight
-      focus:outline-none focus:shadow-outline
-      m-auto
-      w-1/2
+      text-gray-700
+      shadow
+      focus:outline-none
     "
     @submit="submit"
   >
     <div>
       <v-field
         class="
-          shadow
+          focus:shadow-outline
+          w-44
           appearance-none
-          border
           rounded
+          border
           py-2
           px-3
-          text-gray-700
           leading-tight
-          focus:outline-none focus:shadow-outline
-          w-44
+          text-gray-700
+          shadow
+          focus:outline-none
         "
         type="text"
         placeholder="Username"
@@ -43,16 +45,17 @@
     <div>
       <v-field
         class="
-          shadow
+          focus:shadow-outline
+          w-44
           appearance-none
-          border
           rounded
+          border
           py-2
           px-3
-          text-gray-700
           leading-tight
-          focus:outline-none focus:shadow-outline
-          w-44
+          text-gray-700
+          shadow
+          focus:outline-none
         "
         type="text"
         placeholder="Email"
@@ -66,15 +69,16 @@
     <div>
       <button
         class="
+          focus:shadow-outline
           mt-3
+          rounded
           bg-blue-500
-          hover:bg-blue-700
-          text-white
-          font-bold
           py-2
           px-4
-          rounded
-          focus:outline-none focus:shadow-outline
+          font-bold
+          text-white
+          hover:bg-blue-700
+          focus:outline-none
         "
       >
         sumit
