@@ -2,17 +2,16 @@ import firebase from 'firebase/app';
 import 'firebase/messaging';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAI7NcuRdGnOqWifvzaievuvS-8b8klHbk',
-  authDomain: 'cheeers-72364.firebaseapp.com',
-  projectId: 'cheeers-72364',
-  storageBucket: 'cheeers-72364.appspot.com',
-  messagingSenderId: '568928451421',
-  appId: '1:568928451421:web:43d3a478d57902374c46b4',
-  measurementId: 'G-9YPYPHHSSH'
+  apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_APP_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_APP_FIREBASE_MEASUREMENTID
 };
 
-export const vapidKey =
-  'BK2QBvknwYMNYm5xxJXUXjwfKVlEt_bKnh2r7Ohufo0u2Jxa44hr8bsnsBqfGKgUGDTkPZCsLxHDKfgdf1cLtbo';
+export const vapidKey = import.meta.env.VITE_APP_FIREBASE_VAPIDKEY;
 
 firebase.initializeApp(firebaseConfig);
 

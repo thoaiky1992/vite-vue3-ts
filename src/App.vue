@@ -10,7 +10,7 @@ import { useAppService } from '@/services/app.service';
 import { Socket } from 'socket.io-client';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import registerNotification from './helpers/notification';
+import registerNotification from './config/firebase-cloud-messaging/notification';
 import Alert from '@/components/Alert.vue';
 import CDialog from '@/components/Dialog.vue';
 import Form from '@/components/Form.vue';
