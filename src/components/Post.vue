@@ -16,30 +16,25 @@
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent, inject, onMounted, ref } from 'vue';
+<script setup lang="ts">
+import { inject, onMounted, ref } from 'vue';
 import { useCounterStore } from '@/config/pinia/useCounterStore';
 import { storeToRefs } from 'pinia';
-export default defineComponent({
-  setup() {
-    const axios: any = inject('axios');
-    const posts = ref([]);
-    const counterStore = useCounterStore();
-    const { counter } = storeToRefs(counterStore);
-    const { updateCounter } = counterStore;
 
-    onMounted(async () => {
-      const res = await axios.get('/posts');
-      posts.value = res.data.rows;
-    });
+const axios: any = inject('axios');
+const posts = ref<any>([]);
+const counterStore = useCounterStore();
+const { counter } = storeToRefs(counterStore);
+const { updateCounter } = counterStore;
 
-    const reset = () => {
-      counterStore.$reset();
-    };
-
-    return { posts, counter, updateCounter, reset };
-  }
+onMounted(async () => {
+  const res = await axios.get('/posts');
+  posts.value = res.data.rows;
 });
+
+const reset = () => {
+  counterStore.$reset();
+};
 </script>
 
 <style></style>
