@@ -42,6 +42,14 @@ const routes: Array<RouteConfig> = [
     meta: {
       layout: LAYOUT.APP
     }
+  },
+  {
+    path: '/table',
+    name: 'Table',
+    component: () => import('@/components/Table.vue'),
+    meta: {
+      layout: LAYOUT.APP
+    }
   }
 ];
 
@@ -52,7 +60,7 @@ const router = createRouter({
 
 export default function BootstrapRouter() {
   router.beforeEach((to, from, next) => {
-    if (!localStorage.getItem('access_token') && to.meta.layout == 'app') {
+    if (!localStorage.getItem('access_token') && to.meta.layout === LAYOUT.APP) {
       next('/login');
     } else next();
   });

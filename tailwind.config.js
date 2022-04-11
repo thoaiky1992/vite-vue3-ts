@@ -1,7 +1,14 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
+      transitionProperty: {
+        'drawer-item': 'font-size, margin, padding, opacity'
+      },
+      fontSize: {
+        0: '0px'
+      },
       animation: {
         dialog: 'dialog 400ms ease-in-out forwards',
         leave_dialog: 'leave_dialog 300ms ease-in-out forwards',

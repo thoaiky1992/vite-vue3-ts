@@ -2,6 +2,9 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path, { resolve } from 'path';
 import vueI18n from '@intlify/vite-plugin-vue-i18n';
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 export default defineConfig({
   resolve: {
@@ -17,6 +20,12 @@ export default defineConfig({
 
       // you need to set i18n resource including paths !
       include: path.resolve(__dirname, './src/i18n/locales/**')
+    }),
+    AutoImport({
+      resolvers: [ElementPlusResolver()]
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()]
     })
   ],
   server: {

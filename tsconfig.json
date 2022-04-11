@@ -14,7 +14,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["@intlify/vite-plugin-vue-i18n/client", "node"]
+    "types": ["@intlify/vite-plugin-vue-i18n/client", "node", "element-plus/global"]
   },
   "include": [
     "src/**/*.ts",

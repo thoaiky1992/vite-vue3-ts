@@ -50,7 +50,7 @@
           :class="`
             focus:shadow-outline
             w-full
-            appearance-none
+            appearance-none 
             rounded
             border ${errors.password ? 'border-red-500 placeholder-red-500' : ''}
             py-2
@@ -70,17 +70,7 @@
       </div>
       <div class="flex items-center justify-between">
         <button
-          class="
-            focus:shadow-outline
-            rounded
-            bg-blue-500
-            py-2
-            px-4
-            font-bold
-            text-white
-            hover:bg-blue-700
-            focus:outline-none
-          "
+          class="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700 focus:outline-none"
           type="submit"
         >
           Sign In
