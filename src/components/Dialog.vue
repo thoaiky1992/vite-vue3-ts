@@ -1,30 +1,18 @@
 <template>
   <div
-    v-show="show"
-    :class="`
-      fixed
-      inset-0
-      top-0
-      z-50 flex
-      h-full
-      w-full
-      items-center
-      justify-center
-      bg-black
-      bg-opacity-40
-      ${show && flag ? 'animate-dialog_leave_opacity' : 'animate-dialog_opacity'}`"
+    v-show="modelValue"
+    :class="{
+      'fixed inset-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black bg-opacity-50': true,
+      'animate-dialog_leave_opacity': modelValue && flag,
+      'animate-dialog_opacity': modelValue && !flag
+    }"
   >
     <div
-      :class="`
-        flex
-        h-48
-        w-96
-        items-center
-        justify-center
-        rounded-xl
-        bg-white
-        shadow-2xl
-        ${show && flag ? 'animate-dialog' : 'animate-leave_dialog'}`"
+      :class="{
+        'flex h-48 w-96 items-center justify-center rounded-xl bg-white shadow-xl shadow-black': true,
+        'animate-dialog': modelValue && flag,
+        'animate-leave_dialog': modelValue && !flag
+      }"
     >
       <p class="text-2xl font-bold text-black" @click="close">Hello word</p>
     </div>
@@ -36,22 +24,23 @@ import { defineComponent, SetupContext, ref, watch } from 'vue';
 
 export default defineComponent({
   props: {
-    show: {
+    modelValue: {
       type: Boolean,
       default: false
     }
   },
-  emits: ['close'],
+  emits: ['close', 'update:modelValue'],
   setup(props, { emit }: SetupContext) {
     const flag = ref<Boolean>(true);
     const close = () => {
       flag.value = false;
       setTimeout(() => {
         emit('close', false);
+        emit('update:modelValue', false);
       }, 200);
     };
     watch(
-      () => props.show,
+      () => props.modelValue,
       (newVal) => {
         if (newVal) flag.value = true;
       }

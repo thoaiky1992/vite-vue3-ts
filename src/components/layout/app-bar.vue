@@ -13,7 +13,7 @@
         </el-icon>
       </span>
     </div>
-    <div class="flex-1">asd</div>
+    <div class="flex-1 cursor-pointer" @click="toggleDarkMode">toggle dark mode</div>
   </div>
 </template>
 <script setup lang="ts">
@@ -23,6 +23,10 @@ import { ArrowLeftBold } from '@element-plus/icons-vue';
 defineProps({
   modelValue: { type: Boolean, required: true }
 });
+
+const toggleDarkMode = () => {
+  document.querySelector('html')?.classList.toggle('dark');
+};
 
 const toggleDrawer = inject('toggleDrawer');
 </script>

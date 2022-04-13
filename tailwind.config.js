@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       transitionProperty: {
-        'drawer-item': 'font-size, margin, padding, opacity'
+        'drawer-item': 'font-size, margin, padding, opacity, hover'
       },
       fontSize: {
         0: '0px'

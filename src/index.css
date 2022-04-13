@@ -14,3 +14,14 @@
   padding: 0;
   box-sizing: border-box;
 }
+.dark .el-pagination.is-background .el-pager li:not(.is-disabled).is-active {
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity)) !important;
+  border: 1px solid white;
+}
+.dark .el-pagination.is-background .el-pager li:hover {
+  color: white !important;
+  font-weight: bold;
+  transition: 0.3s;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity)) !important;
+  border: 1px solid white;
+}

@@ -1,10 +1,15 @@
 <template>
-  <el-container class="bg-slate-50">
-    <el-aside :class="{ 'drawer z-50 h-screen w-80 bg-white shadow-xl': true, hide }">
+  <el-container class="bg-slate-50 dark:bg-slate-800 dark:text-white">
+    <el-aside
+      :class="{
+        'drawer z-50 h-screen w-80 bg-white shadow-xl dark:bg-slate-600 dark:shadow-white': true,
+        hide
+      }"
+    >
       <drawer />
     </el-aside>
     <el-container>
-      <el-header class="border-0 bg-white px-0 shadow-md">
+      <el-header class="border-0 bg-white px-0 shadow-md dark:bg-slate-600">
         <app-bar v-model="hide" />
       </el-header>
       <el-main>

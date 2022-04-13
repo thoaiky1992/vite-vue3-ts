@@ -1,19 +1,42 @@
 <template>
-  <el-card class="box-card mx-5">
-    <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="date" sortable label="Date" width="180" />
-      <el-table-column prop="name" sortable label="Name" width="180" />
-      <el-table-column prop="address" sortable label="Address" />
+  <el-card class="box-card mx-5 dark:border-0 dark:bg-slate-600 dark:!shadow dark:!shadow-white">
+    <el-table
+      row-class-name="dark:bg-slate-600 dark:text-white"
+      :data="tableData"
+      style="width: 100%"
+    >
+      <el-table-column
+        class-name="dark:!bg-slate-600 dark:text-white"
+        prop="date"
+        sortable
+        label="Date"
+        width="180"
+      />
+      <el-table-column
+        class-name="dark:!bg-slate-600 dark:text-white"
+        prop="name"
+        sortable
+        label="Name"
+        width="180"
+      />
+      <el-table-column
+        class-name="dark:!bg-slate-600 dark:text-white"
+        prop="address"
+        sortable
+        label="Address"
+      />
     </el-table>
     <el-pagination
       background
-      class="mt-5 flex justify-end"
+      class="mt-5 flex justify-end dark:!bg-slate-600 dark:text-white"
       :page-size="10"
       layout="prev, pager, next"
       :total="100"
     />
   </el-card>
-  <el-card class="m-5">
+  <el-card
+    class="box-card m-5 mx-5 dark:border-0 dark:bg-slate-600 dark:!shadow dark:!shadow-white"
+  >
     <div class="block">
       <el-date-picker
         v-model="date"
@@ -25,15 +48,27 @@
       </el-date-picker>
     </div>
   </el-card>
-  <el-card class="m-5 bg-gray-500 font-bold">
-    <h2>hello</h2>
+  <el-card class="mx-5 animate-pulse duration-200 dark:bg-slate-600">
+    <div class="h-24 w-full rounded bg-gray-200 dark:bg-white"></div>
+    <div class="mt-5 flex h-5 w-full rounded bg-gray-200 dark:bg-white">
+      <div class="h-24 flex-1"></div>
+      <div class="h-24 flex-1"></div>
+    </div>
+    <div class="mt-5 flex h-5 w-full rounded bg-gray-200 dark:bg-white">
+      <div class="h-24 flex-1"></div>
+      <div class="h-24 flex-1"></div>
+    </div>
   </el-card>
+  <dialog-app v-model="show" />
 </template>
 
 <script setup lang="ts">
+import DialogApp from '@/components/Dialog.vue';
+
 import { ref } from 'vue';
 
 const date = ref('2022-02-04');
+const show = ref<boolean>(true);
 
 const tableData = [
   {
