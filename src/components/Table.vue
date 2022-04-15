@@ -4,7 +4,9 @@
       row-class-name="dark:bg-slate-600 dark:text-white"
       :data="tableData"
       style="width: 100%"
+      @selection-change="handleSelectionChange"
     >
+      <el-table-column type="selection" width="55" />
       <el-table-column
         class-name="dark:!bg-slate-600 dark:text-white"
         prop="date"
@@ -25,6 +27,14 @@
         sortable
         label="Address"
       />
+      <el-table-column align="right" class-name="dark:!bg-slate-600 dark:text-white">
+        <template #default="scope">
+          <el-button size="small" @click="handleAction(scope.$index, scope.row)">Edit</el-button>
+          <el-button size="small" type="danger" @click="handleAction(scope.$index, scope.row)">
+            Delete
+          </el-button>
+        </template>
+      </el-table-column>
     </el-table>
     <el-pagination
       background
@@ -49,17 +59,17 @@
     </div>
   </el-card>
   <el-card class="mx-5 animate-pulse duration-200 dark:bg-slate-600">
-    <div class="h-24 w-full rounded bg-gray-200 dark:bg-white"></div>
-    <div class="mt-5 flex h-5 w-full rounded bg-gray-200 dark:bg-white">
+    <div class="h-24 w-full rounded bg-gray-300 dark:bg-white"></div>
+    <div class="mt-5 flex h-5 w-full rounded bg-gray-300 dark:bg-white">
       <div class="h-24 flex-1"></div>
       <div class="h-24 flex-1"></div>
     </div>
-    <div class="mt-5 flex h-5 w-full rounded bg-gray-200 dark:bg-white">
+    <div class="mt-5 flex h-5 w-full rounded bg-gray-300 dark:bg-white">
       <div class="h-24 flex-1"></div>
       <div class="h-24 flex-1"></div>
     </div>
   </el-card>
-  <dialog-app v-model="show" />
+  <dialog-app />
 </template>
 
 <script setup lang="ts">
@@ -70,7 +80,21 @@ import { ref } from 'vue';
 const date = ref('2022-02-04');
 const show = ref<boolean>(true);
 
-const tableData = [
+interface ITableItem {
+  date: string;
+  name: string;
+  address: string;
+}
+const handleAction = (index: number, row: ITableItem) => {
+  console.log(index);
+  console.log(row);
+};
+
+const handleSelectionChange = (val: ITableItem[]) => {
+  console.log(val);
+};
+
+const tableData: Array<ITableItem> = [
   {
     date: '2016-05-03',
     name: 'Tom',
