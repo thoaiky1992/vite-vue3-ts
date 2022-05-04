@@ -2,7 +2,7 @@
   <el-container class="bg-slate-50 dark:bg-slate-800 dark:text-white">
     <el-aside
       :class="{
-        'drawer z-50 h-screen w-80 bg-white shadow-xl dark:bg-slate-600 dark:shadow-white': true,
+        'drawer w-68 z-50 h-screen bg-white shadow-xl dark:bg-slate-600 dark:shadow-white': true,
         hide
       }"
     >

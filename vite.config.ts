@@ -37,6 +37,10 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:4000',
         ws: true
+      },
+      '/images': {
+        target: 'http://localhost:4000',
+        ws: true
       }
     }
   }

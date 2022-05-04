@@ -50,6 +50,14 @@ const routes: Array<RouteConfig> = [
     meta: {
       layout: LAYOUT.APP
     }
+  },
+  {
+    path: '/editor',
+    name: 'Editor',
+    component: () => import('@/components/Editor.vue'),
+    meta: {
+      layout: LAYOUT.APP
+    }
   }
 ];
 

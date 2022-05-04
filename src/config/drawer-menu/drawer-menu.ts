@@ -25,7 +25,7 @@ export const DrawerMenuItems: Array<IDrawerMenu> = [
         icon: 'set-up',
         key: 'drawer.dashboard',
         lang: 'drawer.dashboard',
-        href: '/abc'
+        href: '/editor'
       },
       {
         icon: 'post-card',

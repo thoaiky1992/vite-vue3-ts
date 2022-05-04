@@ -13,6 +13,7 @@ declare module 'vue' {
     DashboardIcon: typeof import('./src/components/svg/dashboard-icon.vue')['default'];
     Dialog: typeof import('./src/components/Dialog.vue')['default'];
     Drawer: typeof import('./src/components/layout/drawer.vue')['default'];
+    Editor: typeof import('./src/components/Editor.vue')['default'];
     ElAside: typeof import('element-plus/es')['ElAside'];
     ElButton: typeof import('element-plus/es')['ElButton'];
     ElCard: typeof import('element-plus/es')['ElCard'];
@@ -40,6 +41,7 @@ declare module 'vue' {
     Login: typeof import('./src/components/Login.vue')['default'];
     Post: typeof import('./src/components/Post.vue')['default'];
     Table: typeof import('./src/components/Table.vue')['default'];
+    TinymceEditor: typeof import('./src/components/helpers/tinymce-editor.vue')['default'];
   }
 }
 

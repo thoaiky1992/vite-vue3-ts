@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
+    "@tinymce/tinymce-vue": "^5.0.0",
     "@types/moment-timezone": "^0.5.30",
     "@vee-validate/rules": "^4.5.10",
     "axios": "^0.26.1",
@@ -23,6 +24,7 @@
     "pinia": "^2.0.13",
     "register-service-worker": "^1.7.1",
     "socket.io-client": "^4.4.1",
+    "tinymce": "^6.0.2",
     "vee-validate": "^4.5.10",
     "vue": "^3.2.0",
     "vue-3-socket.io": "^1.0.4",
