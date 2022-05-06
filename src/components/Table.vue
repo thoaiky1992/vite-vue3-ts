@@ -4,8 +4,19 @@
       row-class-name="dark:bg-slate-600 dark:text-white"
       :data="tableData"
       style="width: 100%"
+      :row-key="(row) => row.id"
+      :expand-row-keys="expandRowKeys"
       @selection-change="handleSelectionChange"
+      @expand-change="handleExpandChange"
     >
+      <el-table-column type="expand">
+        <template #default="{ row }">
+          <el-card class="m-1">
+            <div>{{ row.profile.age }}</div>
+            <div>{{ row.profile.phone }}</div>
+          </el-card>
+        </template>
+      </el-table-column>
       <el-table-column type="selection" width="55" />
       <el-table-column
         class-name="dark:!bg-slate-600 dark:text-white"
@@ -79,6 +90,7 @@ import { ref } from 'vue';
 
 const date = ref('2022-02-04');
 const show = ref<boolean>(true);
+const expandRowKeys = ref([]);
 
 interface ITableItem {
   date: string;
@@ -94,21 +106,43 @@ const handleSelectionChange = (val: ITableItem[]) => {
   console.log(val);
 };
 
+const handleExpandChange = (row, expandedRows) => {
+  const id = row.id;
+  const lastId = expandRowKeys.value[0];
+  // disable mutiple row expanded
+  expandRowKeys.value = id === lastId ? [] : [id];
+};
+
 const tableData: Array<ITableItem> = [
   {
+    id: 123,
     date: '2016-05-03',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
+    address: 'No. 189, Grove St, Los Angeles',
+    profile: {
+      age: 11,
+      phone: 22222
+    }
   },
   {
+    id: 22342,
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 199, Grove St, Los Angeles'
+    address: 'No. 199, Grove St, Los Angeles',
+    profile: {
+      age: 234235,
+      phone: 457567658678678
+    }
   },
   {
+    id: 3345345,
     date: '2016-05-04',
     name: 'Tom',
-    address: 'No. 200, Grove St, Los Angeles'
+    address: 'No. 200, Grove St, Los Angeles',
+    profile: {
+      age: 890890890,
+      phone: 232312312
+    }
   }
 ];
 </script>
