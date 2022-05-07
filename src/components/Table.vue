@@ -1,8 +1,8 @@
 <template>
   <el-card class="box-card mx-5 dark:border-0 dark:bg-slate-600 dark:!shadow dark:!shadow-white">
     <el-table
-      row-class-name="dark:bg-slate-600 dark:text-white"
-      :data="tableData"
+      :row-class-name="setClassName"
+      :data="displayTableData"
       style="width: 100%"
       :row-key="(row) => row.id"
       :expand-row-keys="expandRowKeys"
@@ -11,7 +11,7 @@
     >
       <el-table-column type="expand">
         <template #default="{ row }">
-          <el-card class="m-1">
+          <el-card v-if="row.profile" class="m-1">
             <div>{{ row.profile.age }}</div>
             <div>{{ row.profile.phone }}</div>
           </el-card>
@@ -50,9 +50,10 @@
     <el-pagination
       background
       class="mt-5 flex justify-end dark:!bg-slate-600 dark:text-white"
-      :page-size="10"
+      :page-size="pageSize"
       layout="prev, pager, next"
-      :total="100"
+      :total="tableData.length"
+      @current-change="handleCurrentChange"
     />
   </el-card>
   <el-card
@@ -86,16 +87,35 @@
 <script setup lang="ts">
 import DialogApp from '@/components/Dialog.vue';
 
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 const date = ref('2022-02-04');
+const pageSize = ref(5);
+const currentPage = ref(1);
+
+const displayTableData = computed(() =>
+  [...tableData].slice(
+    pageSize.value * currentPage.value - pageSize.value,
+    pageSize.value * currentPage.value
+  )
+);
+
+const handleCurrentChange = (val: number) => (currentPage.value = val);
+
 const show = ref<boolean>(true);
-const expandRowKeys = ref([]);
+const expandRowKeys = ref<any>([]);
+
+const setClassName = ({ row, index }: any) => {
+  //Return a class or null through its own logic
+  return `dark:bg-slate-600 dark:text-white ${row.profile ? '' : 'no-expand'}`;
+};
 
 interface ITableItem {
+  id: number;
   date: string;
   name: string;
   address: string;
+  profile?: Object;
 }
 const handleAction = (index: number, row: ITableItem) => {
   console.log(index);
@@ -106,7 +126,7 @@ const handleSelectionChange = (val: ITableItem[]) => {
   console.log(val);
 };
 
-const handleExpandChange = (row, expandedRows) => {
+const handleExpandChange = (row: any, expandedRows: any) => {
   const id = row.id;
   const lastId = expandRowKeys.value[0];
   // disable mutiple row expanded
@@ -128,11 +148,55 @@ const tableData: Array<ITableItem> = [
     id: 22342,
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 199, Grove St, Los Angeles',
-    profile: {
-      age: 234235,
-      phone: 457567658678678
-    }
+    address: 'No. 199, Grove St, Los Angeles'
+  },
+  {
+    id: 22342,
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 199, Grove St, Los Angeles'
+  },
+  {
+    id: 22342,
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 199, Grove St, Los Angeles'
+  },
+  {
+    id: 22342,
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 199, Grove St, Los Angeles'
+  },
+  {
+    id: 22342,
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 199, Grove St, Los Angeles'
+  },
+  {
+    id: 22342,
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 199, Grove St, Los Angeles'
+  },
+  {
+    id: 22342,
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 199, Grove St, Los Angeles'
+  },
+  {
+    id: 22342,
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 199, Grove St, Los Angeles'
+  },
+  {
+    id: 22342,
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 199, Grove St, Los Angeles'
   },
   {
     id: 3345345,
@@ -146,3 +210,9 @@ const tableData: Array<ITableItem> = [
   }
 ];
 </script>
+<style lang="sass">
+.no-expand .el-table__expand-icon
+  pointer-events: none
+  .el-icon
+    display: none
+</style>

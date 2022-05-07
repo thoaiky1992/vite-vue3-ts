@@ -9,44 +9,50 @@
           active:
             drawerMenuItem.children &&
             drawerMenuItem.children.length &&
-            drawerMenuItemIndex === index
+            drawerMenuItemIndex.some((i) => i === index)
         }"
-        @click="drawerMenuItemIndex = index"
       >
-        <router-link
-          :to="drawerMenuItem.href"
+        <div
           :class="{
-            'flex w-full items-center justify-between rounded-xl p-2 font-bold transition duration-100 ease-in-out hover:scale-110 hover:bg-gray-200 hover:text-gray-800 hover:shadow-lg': true,
+            'flex w-full items-center justify-start rounded-xl p-2 font-bold transition duration-100 ease-in-out': true,
             'bg-gray-200 text-gray-800 shadow-lg': drawerMenuItem.href === $route.path,
-            'disabled-link': drawerMenuItem.children && drawerMenuItem.children.length
+            'hover:scale-110 hover:bg-gray-200 hover:text-gray-800 hover:shadow-lg':
+              !drawerMenuItem.children && !drawerMenuItem.children?.length
           }"
         >
-          <div class="flex items-center">
-            <div
-              :class="{
-                'mr-3 flex h-6 w-6 items-center justify-center ': true,
-                'rounded bg-gray-800 text-white shadow-xl':
-                  drawerMenuItem.children &&
+          <div
+            :class="{
+              'mr-3 flex h-6 w-6 items-center justify-center ': true,
+              'rounded bg-gray-800 text-white shadow-xl':
+                (drawerMenuItem.children &&
                   drawerMenuItem.children.length &&
-                  drawerMenuItem.children.some((item) => item.href === $route.path)
-              }"
-            >
-              <el-icon :size="drawerMenuItem.size">
-                <component :is="getIcon(drawerMenuItem.icon)" />
-              </el-icon>
-            </div>
-            <div>
+                  drawerMenuItem.children.some((item) => item.href === $route.path)) ||
+                drawerMenuItem.href === $route.path
+            }"
+          >
+            <el-icon :size="drawerMenuItem.size">
+              <component :is="getIcon(drawerMenuItem.icon)" />
+            </el-icon>
+          </div>
+          <component
+            :is="drawerMenuItem.children && drawerMenuItem.children.length ? 'span' : 'router-link'"
+            :to="drawerMenuItem.href"
+            class="flex flex-1 items-center justify-between"
+          >
+            <div class="drawer__menu__item__title" @click="handleToggleMenuItem(index)">
               {{ drawerMenuItem.lang }}
             </div>
-          </div>
-          <arrow-right-icon
-            v-if="drawerMenuItem.children && drawerMenuItem.children.length"
-            :class="{
-              'rotate-[-90deg]': true,
-              'rotate-[0deg]': drawerMenuItemIndex === index
-            }"
-          />
-        </router-link>
+            <arrow-right-icon
+              v-if="drawerMenuItem.children && drawerMenuItem.children.length"
+              :class="{
+                'drawer__menu__item__arrow transition-all hover:rounded-full hover:bg-gray-200': true,
+                'rotate-[-90deg]': true,
+                'rotate-[0deg]': drawerMenuItemIndex.some((i) => i === index)
+              }"
+              @click.prevent="handleToggleMenuItem(index)"
+            />
+          </component>
+        </div>
         <!-- If drawerMenuItem has children  -->
         <ul class="drawer__submenu my-1 ml-4 border-l pl-3">
           <li v-for="drawerSubmenuItem in drawerMenuItem.children" :key="drawerSubmenuItem.key">
@@ -72,7 +78,16 @@ import DashBoardIcon from '@/components/svg/dashboard-icon.vue';
 import { User, SetUp, Postcard, Location, PriceTag, Star, Setting } from '@element-plus/icons-vue';
 import { DrawerMenuItems } from '@/config/drawer-menu/drawer-menu';
 
-const drawerMenuItemIndex = ref<number>(-1);
+const drawerMenuItemIndex = ref<Array<number>>([]);
+
+const handleToggleMenuItem = (index: number) => {
+  const flag = drawerMenuItemIndex.value.some((i) => i === index);
+  if (flag) {
+    drawerMenuItemIndex.value = [...drawerMenuItemIndex.value].filter((i) => i !== index);
+    return;
+  }
+  drawerMenuItemIndex.value.push(index);
+};
 
 const getDrawerMenuItems = computed(() => {
   return DrawerMenuItems;
@@ -110,7 +125,6 @@ const getIcon = (icon: string) => {
         font-size: 14px
         padding: 0.5rem
         margin-top: 0.5rem
-        transform: scale(1)
         transition: 0.2s
         &:hover
           transform: scale(1.05)
