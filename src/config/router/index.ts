@@ -7,6 +7,7 @@ export enum LAYOUT {
 interface AppRouterMeta {
   meta: {
     layout: LAYOUT;
+    isAuth?: Boolean;
   };
 }
 type RouteConfig = RouteRecordRaw & AppRouterMeta;
@@ -58,6 +59,14 @@ const routes: Array<RouteConfig> = [
     meta: {
       layout: LAYOUT.APP
     }
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: () => import('@/components/Test.vue'),
+    meta: {
+      layout: LAYOUT.DEFAULT
+    }
   }
 ];
 
@@ -68,9 +77,10 @@ const router = createRouter({
 
 export default function BootstrapRouter() {
   router.beforeEach((to, from, next) => {
-    if (!localStorage.getItem('access_token') && to.meta.layout === LAYOUT.APP) {
-      next('/login');
-    } else next();
+    // if (!localStorage.getItem('access_token') && to.meta.layout === LAYOUT.APP) {
+    //   next('/login');
+    // } else next();
+    next();
   });
   router.afterEach(({ name }) => {
     if (name) {

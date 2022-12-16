@@ -28,5 +28,5 @@ const toggleDarkMode = () => {
   document.querySelector('html')?.classList.toggle('dark');
 };
 
-const toggleDrawer = inject('toggleDrawer');
+const toggleDrawer: any = inject('toggleDrawer');
 </script>

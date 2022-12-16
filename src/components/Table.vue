@@ -1,5 +1,5 @@
 <template>
-  <el-card class="box-card mx-5 dark:border-0 dark:bg-slate-600 dark:!shadow dark:!shadow-white">
+  <el-card class="box-card dark:border-0 dark:bg-slate-600 dark:!shadow dark:!shadow-white">
     <el-table
       :row-class-name="setClassName"
       :data="displayTableData"
@@ -56,9 +56,7 @@
       @current-change="handleCurrentChange"
     />
   </el-card>
-  <el-card
-    class="box-card m-5 mx-5 dark:border-0 dark:bg-slate-600 dark:!shadow dark:!shadow-white"
-  >
+  <el-card class="box-card my-5 dark:border-0 dark:bg-slate-600 dark:!shadow dark:!shadow-white">
     <div class="block">
       <el-date-picker
         v-model="date"
@@ -70,7 +68,7 @@
       </el-date-picker>
     </div>
   </el-card>
-  <el-card class="mx-5 animate-pulse duration-200 dark:bg-slate-600">
+  <el-card class="my-5 animate-pulse duration-200 dark:bg-slate-600">
     <div class="h-24 w-full rounded bg-gray-300 dark:bg-white"></div>
     <div class="mt-5 flex h-5 w-full rounded bg-gray-300 dark:bg-white">
       <div class="h-24 flex-1"></div>

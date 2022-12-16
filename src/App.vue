@@ -23,6 +23,7 @@ import localeJa from '@/config/i18n/locales/ja';
 import AppLayout from '@/components/layout/app-layout.vue';
 import AuthLayout from '@/components/layout/auth-layout.vue';
 import { LAYOUT } from './config/router';
+import defaultLayoutVue from './components/layout/default-layout.vue';
 
 const router = useRouter();
 const route = useRoute();
@@ -48,7 +49,7 @@ const getLayout = computed(() => {
     case LAYOUT.AUTH:
       return AuthLayout;
     default:
-      return AppLayout;
+      return defaultLayoutVue;
   }
 });
 

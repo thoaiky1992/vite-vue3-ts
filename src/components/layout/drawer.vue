@@ -1,11 +1,11 @@
 <template>
-  <div class="h-screen w-full px-6 pt-4">
+  <div class="h-screen w-[300px] px-6 pt-4">
     <ul class="drawer__menu flex flex-col">
       <li
         v-for="(drawerMenuItem, index) in getDrawerMenuItems"
         :key="drawerMenuItem.key"
         :class="{
-          'drawer__menu__item my-2 cursor-pointer': true,
+          'drawer__menu__item relative my-2 cursor-pointer': true,
           active:
             drawerMenuItem.children &&
             drawerMenuItem.children.length &&
@@ -37,7 +37,7 @@
           <component
             :is="drawerMenuItem.children && drawerMenuItem.children.length ? 'span' : 'router-link'"
             :to="drawerMenuItem.href"
-            class="flex flex-1 items-center justify-between"
+            class="flex flex-1 items-center justify-between overflow-hidden"
           >
             <div class="drawer__menu__item__title" @click="handleToggleMenuItem(index)">
               {{ drawerMenuItem.lang }}

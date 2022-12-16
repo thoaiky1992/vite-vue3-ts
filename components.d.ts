@@ -11,6 +11,7 @@ declare module 'vue' {
     ArrowRightIcon: typeof import('./src/components/svg/arrow-right-icon.vue')['default'];
     AuthLayout: typeof import('./src/components/layout/auth-layout.vue')['default'];
     DashboardIcon: typeof import('./src/components/svg/dashboard-icon.vue')['default'];
+    DefaultLayout: typeof import('./src/components/layout/default-layout.vue')['default'];
     Dialog: typeof import('./src/components/Dialog.vue')['default'];
     Drawer: typeof import('./src/components/layout/drawer.vue')['default'];
     Editor: typeof import('./src/components/Editor.vue')['default'];
@@ -43,6 +44,8 @@ declare module 'vue' {
     Login: typeof import('./src/components/Login.vue')['default'];
     Post: typeof import('./src/components/Post.vue')['default'];
     Table: typeof import('./src/components/Table.vue')['default'];
+    Test: typeof import('./src/components/Test.vue')['default'];
+    TestItem: typeof import('./src/components/TestItem.vue')['default'];
     TinymceEditor: typeof import('./src/components/helpers/tinymce-editor.vue')['default'];
   }
 }
